@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 function isNatural(n) {
-  return Number.isInteger(n) && n > 0;
+  return n > 0n;
 }
 
 function getGSD(x, y) {
@@ -23,11 +23,16 @@ function getLCM(x,y) {
 };
 
 app.get('/zalogova_an_yandex_ru', (req, res) => {
-  const x = BigInt(req.query.x);
-  const y = BigInt(req.query.y);
+  try {
+    const x = BigInt(req.query.x);
+    const y = BigInt(req.query.y);
 
-  res.type('text/plain');
-  res.send(getLCM(x,y));
+    res.type('text/plain');
+    res.send(getLCM(x, y));
+  } catch {
+    res.type('text/plain');
+    res.send('NaN');
+  }
 });
 
 const PORT = process.env.PORT || 3000;
