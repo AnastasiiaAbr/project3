@@ -5,8 +5,8 @@ function isNatural(n) {
   return n > 0n;
 }
 
-function getGSD(x, y) {
-  while (y !== 0) {
+function getGCD(x, y) {
+  while (y !== 0n) {
     let temp = y;
     y = x % y;
     x = temp;
@@ -19,7 +19,7 @@ function getLCM(x,y) {
     return "NaN";
   } 
   
-  return String((x * y)/getGSD(x, y));
+  return String((x * y)/getGCD(x, y));
 };
 
 app.get('/zalogova_an_yandex_ru', (req, res) => {
