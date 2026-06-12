@@ -23,8 +23,8 @@ function getLCM(x,y) {
 };
 
 app.get('/zalogova_an_yandex_ru', (req, res) => {
-  const x = Number(req.query.x);
-  const y = Number(req.query.y);
+  const x = BigInt(req.query.x);
+  const y = BigInt(req.query.y);
 
   res.type('text/plain');
   res.send(getLCM(x,y));
